@@ -14,26 +14,6 @@ def main():
     target_date_str = '2023-11-28 23:59:59'
     quotes_refresh_time = 600
     remaining_days = 0
-
-    st.markdown(
-        """
-        <style>
-        /* Reduce the title font size */
-        .title-container .stTitle {
-            font-size: 22px;
-        }
-        /* Reduce the header font size */
-        h1 {
-            font-size: 22px;
-        }
-        /* Reduce the st.metric font size */
-        .stMetricValue, .stMetricDelta, .stMetricLabel {
-            font-size: 32px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
     st.title("Nandu entry countdown timer App")
 
     st.empty()
