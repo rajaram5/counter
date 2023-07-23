@@ -12,7 +12,7 @@ def main():
     # Initialize Streamlit session state
     init_session_state()
     target_date_str = '2023-11-28 23:59:59'
-    quotes_refresh_time = 10
+    quotes_refresh_time = 600
     remaining_days = 0
 
     st.set_page_config()
