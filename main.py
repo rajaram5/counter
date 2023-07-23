@@ -13,7 +13,7 @@ def main():
     init_session_state()
     target_date_str = '2023-11-28 23:59:59'
     quotes_refresh_time = 1800
-    balloons_time = 600
+    balloons_time = quotes_refresh_time
     remaining_days = 0
     baby_emoji = "👶"
     st.title(f"{baby_emoji}Nandu entry countdown App{baby_emoji}")
