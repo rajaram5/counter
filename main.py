@@ -13,6 +13,7 @@ def main():
     init_session_state()
     target_date_str = '2023-11-28 23:59:59'
     quotes_refresh_time = 1800
+    balloons_time = 600
     remaining_days = 0
     baby_emoji = "👶"
     st.title(f"{baby_emoji}Nandu entry countdown App{baby_emoji}")
@@ -53,7 +54,8 @@ def main():
             quotes_placeholder.write(quotes)
         time.sleep(1)
         time_counter = time_counter + 1
-        
+        if time_counter > balloons_time and time_counter < (balloons_time + 10):
+            st.balloons()
         if time_counter == quotes_refresh_time:
             time_counter = 0
             quotes = utils.get_quotes()
