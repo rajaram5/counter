@@ -34,7 +34,7 @@ def get_quotes():
         print(response.text)
         data_list = json.loads(response.text)
         quote = data_list[0]["quote"]
-        quote = category + " quote: " + quote
+        quote = "<" + category + "> quote: " + quote
         return quote
     else:
         print("Error:", response.status_code, response.text)
