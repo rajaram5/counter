@@ -12,23 +12,30 @@ def main():
     # Initialize Streamlit session state
     init_session_state()
     target_date_str = '2023-11-28 23:59:59'
+    quotes_refresh_time = 10
     remaining_days = 0
 
     st.set_page_config()
     st.title("Nandu entry countdown timer App")
 
     st.empty()
-    col1, col2 = st.columns(2)
+    row1_1, row1_2 = st.columns(2)
+    row2_1 = st.text("")
+    quotes = utils.get_quotes()
     # Display the countdown timer in the first column
-    with col1:
+    with row1_1:
         countdown_placeholder = st.empty()
         countdown_placeholder.write("Remaining time: {countdown_str}")
-
     # Display the countdown timer in the second column
-    with col2:
+    with row1_2:
         week_placeholder = st.empty()
         week_placeholder.write("Remaining week: {countdown_str}")
+    # Display the countdown timer in the second column
+    with row2_1:
+        quotes_placeholder = st.empty()
+        quotes_placeholder.write(quotes)
 
+    time_counter = 0
     while remaining_days >= -50:
         remaining_time = utils.calculate_remaining_time(target_date_str)
         # Extract the number of days
@@ -39,11 +46,19 @@ def main():
         remaining_time_str = str(remaining_time)
         remaining_weeks_str = str(remaining_weeks)
 
-        with col1:
+        with row1_1:
             countdown_placeholder.metric("Remaining time", remaining_time_str)
-        with col2:
+        with row1_2:
             week_placeholder.metric("Remaining weeks", remaining_weeks_str)
+        with row2_1:
+            quotes_placeholder.write(quotes)
         time.sleep(1)
+        time_counter = time_counter + 1
+        
+        if time_counter == quotes_refresh_time:
+            time_counter = 0
+            quotes = utils.get_quotes()
+
 
 if __name__ == "__main__":
     main()

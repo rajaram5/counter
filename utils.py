@@ -1,4 +1,10 @@
 from datetime import datetime, timedelta
+import requests
+import random
+import json
+import os
+
+ninjas_key = os.environ["ninjas_key"]
 
 def calculate_remaining_time(target_date_str):
     try:
@@ -18,3 +24,17 @@ def calculate_remaining_time(target_date_str):
         return remaining_time
     except ValueError:
         return None
+
+def get_quotes():
+    categories = ['age', 'beauty', 'family', 'funny', 'future', 'happiness', 'home', 'life', 'mom']
+    category = random.choice(categories)
+    api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
+    response = requests.get(api_url, headers={'X-Api-Key': ninjas_key})
+    if response.status_code == requests.codes.ok:
+        print(response.text)
+        data_list = json.loads(response.text)
+        quote = data_list[0]["quote"]
+        quote = category + " quote: " + quote
+        return quote
+    else:
+        print("Error:", response.status_code, response.text)
