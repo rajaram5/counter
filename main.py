@@ -12,9 +12,10 @@ def main():
     # Initialize Streamlit session state
     init_session_state()
     target_date_str = '2023-11-28 23:59:59'
-    quotes_refresh_time = 600
+    quotes_refresh_time = 1800
     remaining_days = 0
-    st.title("Nandu entry countdown timer App")
+    baby_emoji = "👶"
+    st.title(f"{baby_emoji}Nandu entry countdown App{baby_emoji}")
 
     st.empty()
     row1_1, row1_2 = st.columns(2)
