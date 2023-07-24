@@ -17,7 +17,7 @@ def calculate_remaining_time(target_date_str):
         netherlands_tz = pytz.timezone('Europe/Amsterdam')
 
         # Get the current time in the Netherlands timezone
-        current_time = datetime.datetime.now(netherlands_tz)
+        current_time = datetime.now(netherlands_tz)
 
         # Calculate the time difference
         remaining_time = target_date - current_time
