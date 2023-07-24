@@ -4,6 +4,7 @@ import random
 import json
 import os
 import streamlit
+import pytz
 
 ninjas_key = os.environ["ninjas_key"]
 
@@ -12,12 +13,14 @@ def calculate_remaining_time(target_date_str):
     try:
         # Convert the target date string to a datetime object
         target_date = datetime.strptime(target_date_str, '%Y-%m-%d %H:%M:%S')
+        # Get the timezone object for the Netherlands
+        netherlands_tz = pytz.timezone('Europe/Amsterdam')
 
-        # Get the current date and time
-        current_date = datetime.now()
+        # Get the current time in the Netherlands timezone
+        current_time = datetime.datetime.now(netherlands_tz)
 
         # Calculate the time difference
-        remaining_time = target_date - current_date
+        remaining_time = target_date - current_time
 
         # Round seconds to the nearest whole number
         remaining_seconds = int(remaining_time.total_seconds())
