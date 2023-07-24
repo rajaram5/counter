@@ -3,11 +3,11 @@ import requests
 import random
 import json
 import os
-import streamlit
+import streamlit as st
 
 ninjas_key = os.environ["ninjas_key"]
 
-@st.cache(suppress_st_warning=True)
+@st.cache_data(suppress_st_warning=True)
 def calculate_remaining_time(target_date_str):
     try:
         # Convert the target date string to a datetime object
