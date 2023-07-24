@@ -7,7 +7,7 @@ import streamlit
 
 ninjas_key = os.environ["ninjas_key"]
 
-@st.cache(suppress_st_warning=True)
+#@st.cache(suppress_st_warning=True)
 def calculate_remaining_time(target_date_str):
     try:
         # Convert the target date string to a datetime object
@@ -26,7 +26,7 @@ def calculate_remaining_time(target_date_str):
         return remaining_time
     except ValueError:
         return None
-@st.cache(suppress_st_warning=True)
+#@st.cache(suppress_st_warning=True)
 def get_quotes():
     categories = ['age', 'beauty', 'family', 'funny', 'future', 'happiness', 'home', 'life', 'mom']
     category = random.choice(categories)
