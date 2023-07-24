@@ -2,15 +2,8 @@ import streamlit as st
 import time
 import utils
 
-# Function to initialize Streamlit session state if needed
-def init_session_state():
-    if "initialized" not in st.session_state:
-        st.session_state.initialized = True
-
 # Main function
 def main():
-    # Initialize Streamlit session state
-    init_session_state()
     target_date_str = '2023-11-28 23:59:59'
     quotes_refresh_time = 1800
     balloons_time = quotes_refresh_time
