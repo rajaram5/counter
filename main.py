@@ -47,7 +47,7 @@ def main():
             quotes_placeholder.write(quotes)
         time.sleep(1)
         time_counter = time_counter + 1
-        if time_counter > balloons_time and time_counter < (balloons_time + 10):
+        if time_counter > balloons_time and time_counter < (balloons_time + 30):
             st.balloons()
         if time_counter == quotes_refresh_time:
             time_counter = 0
