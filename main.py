@@ -3,7 +3,7 @@ import time
 import utils
 
 # Main function
-def main():
+def main() -> object:
     target_date_str = '2023-11-28 23:59:59'
     quotes_refresh_time = 1800
     balloons_time = quotes_refresh_time
@@ -55,4 +55,6 @@ def main():
 
 
 if __name__ == "__main__":
+    st.set_page_config(layout="wide")
+    st.set_option('client.caching', 'clear')
     main()
