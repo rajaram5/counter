@@ -8,15 +8,18 @@ import pytz
 
 ninjas_key = os.environ["ninjas_key"]
 
-#@st.cache(suppress_st_warning=True)
+@st.cache_data
 def calculate_remaining_time(target_date_str):
     try:
         # Convert the target date string to a datetime object
         target_date = datetime.strptime(target_date_str, '%Y-%m-%d %H:%M:%S')
 
         # Get the current date and time
-        current_date = datetime.now()
-
+        #current_date = datetime.now()
+        tz = pytz.timezone("Europe/Paris")
+        current_date = datetime.now(tz)
+        current_date_str = current_date.strftime("%Y-%m-%d %H:%M:%S")
+        current_date = datetime.strptime(current_date_str, '%Y-%m-%d %H:%M:%S')
         # Calculate the time difference
         remaining_time = target_date - current_date
 
@@ -27,7 +30,7 @@ def calculate_remaining_time(target_date_str):
         return remaining_time
     except ValueError:
         return None
-#@st.cache(suppress_st_warning=True)
+@st.cache_data
 def get_quotes():
     categories = ['age', 'beauty', 'family', 'funny', 'future', 'happiness', 'home', 'life', 'mom']
     category = random.choice(categories)
